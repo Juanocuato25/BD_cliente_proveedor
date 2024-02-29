@@ -26,12 +26,12 @@ public class Cliente extends Persona {
     @Override
     public String toString() {
         return "Cliente{" +
-                ", id=" + id +
-                ", nombre='" + nombre + '\'' +
-                ", numero_documento=" + numero_documento +
-                ", celular=" + celular +
-                ", correo='" + correo + '\'' +
-                ", fecha_registro=" + fecha_registro +
-                "fecha_nacimiento=" + fecha_nacimiento + '}';
+                ", id: " + id +
+                ", Nombre: " + nombre +
+                ", Tipo documento: "+ tipoDocumento.toString()+
+                ", Numero_documento : " + numero_documento +
+                ", Celular: " + celular +
+                ", Correo: " + correo +
+                "  Fecha_nacimiento: " + fecha_nacimiento + '}';
     }
 }

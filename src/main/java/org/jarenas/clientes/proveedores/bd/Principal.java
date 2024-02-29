@@ -1,11 +1,9 @@
 package org.jarenas.clientes.proveedores.bd;
 
+import org.jarenas.clientes.proveedores.bd.model.Cliente;
 import org.jarenas.clientes.proveedores.bd.model.Proveedor;
 import org.jarenas.clientes.proveedores.bd.model.TipoDocumento;
-import org.jarenas.clientes.proveedores.bd.repositorio.ProveedorRepositorioImpl;
-import org.jarenas.clientes.proveedores.bd.repositorio.RepositorioPersona;
-import org.jarenas.clientes.proveedores.bd.repositorio.RepositorioTipoDocumento;
-import org.jarenas.clientes.proveedores.bd.repositorio.TipoDocumentoRepositorioImpl;
+import org.jarenas.clientes.proveedores.bd.repositorio.*;
 
 import java.util.Date;
 
@@ -21,7 +19,7 @@ public class Principal {
         //System.out.println(repositorioProveedor.porId(1L));
 
 
-        Proveedor p = new Proveedor();
+        /*Proveedor p = new Proveedor();
         p.setNombre("Coca Cola");
         p.setCelular(601796511L);
         TipoDocumento tp = new TipoDocumento();
@@ -35,8 +33,13 @@ public class Principal {
         repositorioProveedor.guardar(p);
         repositorioProveedor.listar().forEach(System.out::println);
 
-        /*repositorioProveedor.eliminar(3L);
+        repositorioProveedor.eliminar(3L);
         repositorioProveedor.listar().forEach(System.out::println);*/
+
+        RepositorioPersona<Cliente> repositorioPersona = new ClienteRepositorioImpl();
+
+        //repositorioPersona.listar().forEach(System.out::println);
+        repositorioPersona.cumpleanios().forEach(System.out::println);
 
     }
 }
