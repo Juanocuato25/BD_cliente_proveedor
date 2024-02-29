@@ -4,10 +4,7 @@ import org.jarenas.clientes.proveedores.bd.model.Cliente;
 import org.jarenas.clientes.proveedores.bd.model.TipoDocumento;
 import org.jarenas.clientes.proveedores.bd.util.ConecionBDMysql;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -47,6 +44,13 @@ public class ClienteRepositorioImpl implements RepositorioPersona<Cliente> {
 
     @Override
     public void eliminar(Long id) {
+        try(Connection conn = getConnection();
+            PreparedStatement stmt = conn.prepareStatement("DELETE FROM clientes WHERE id_cliente=?")) {
+            stmt.setLong(1,id);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 
