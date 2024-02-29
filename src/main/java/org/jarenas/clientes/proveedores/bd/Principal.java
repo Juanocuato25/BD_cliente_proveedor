@@ -39,7 +39,25 @@ public class Principal {
         RepositorioPersona<Cliente> repositorioPersona = new ClienteRepositorioImpl();
 
         //repositorioPersona.listar().forEach(System.out::println);
+        //repositorioPersona.cumpleanios().forEach(System.out::println);
+
+       /* Cliente c = new Cliente();
+        c.setNombre("Helena");
+        c.setCelular(315876543L);
+        TipoDocumento tp = new TipoDocumento();
+        tp.setId(1L);
+        c.setTipoDocumento(tp);
+        c.setNumero_documento(109876533L);
+        c.setFecha_registro(new Date());
+        c.setCorreo("helena@outlook.com");
+        c.setFecha_nacimiento("1985-03-01");
+        repositorioPersona.guardar(c);*/
+        repositorioPersona.listar().forEach(System.out::println);
+        System.out.println("-------------------------Cumpleañeros-------------------------------");
         repositorioPersona.cumpleanios().forEach(System.out::println);
+
+
+
 
     }
 }

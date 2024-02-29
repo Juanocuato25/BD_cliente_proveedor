@@ -4,22 +4,26 @@ import java.sql.Date;
 
 public class Cliente extends Persona {
 
-    private Date fecha_nacimiento;
+    private String fecha_nacimiento;
+
+
 
     public Cliente() {
     }
 
-    public Cliente(Date fecha_nacimiento, Long id, String nombre, Long numero_documento, Long celular, String correo, Date fecha_registro, TipoDocumento tipoDocumento) {
+    public Cliente(String fecha_nacimiento, Long id, String nombre, Long numero_documento, Long celular, String correo, Date fecha_registro, TipoDocumento tipoDocumento) {
         super(id, nombre, numero_documento, celular, correo, fecha_registro,tipoDocumento);
         this.fecha_nacimiento = fecha_nacimiento;
     }
 
 
-    public Date getFecha_nacimiento() {
+    public String getFecha_nacimiento() {
+
         return fecha_nacimiento;
     }
 
-    public void setFecha_nacimiento(Date fecha_nacimiento) {
+    public void setFecha_nacimiento(String fecha_nacimiento) {
+
         this.fecha_nacimiento = fecha_nacimiento;
     }
 

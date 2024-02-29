@@ -39,7 +39,32 @@ public class ClienteRepositorioImpl implements RepositorioPersona<Cliente> {
 
     @Override
     public void guardar(Cliente cliente) {
+        String sql;
+        if (cliente.getId() != null && cliente.getId() > 0) {
+            sql = "UPDATE clientes set nombre_cliente=?, celular=?, fk-tipo_documento=?, n_documento=?, correo=?, fecha_nacimiento=? WHERE id_cliente = ?";
+        } else {
+            sql = "INSERT INTO clientes(nombre_cliente, celular, fk_tipo_documento, n_documento, correo, fecha_nacimiento, fecha_registro) VALUES (?,?,?,?,?,?,?)";
+        }
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
 
+
+            stmt.setString(1, cliente.getNombre());
+            stmt.setLong(2, cliente.getCelular());
+            stmt.setLong(3, cliente.getTipoDocumento().getId());
+            stmt.setLong(4, cliente.getNumero_documento());
+            stmt.setString(5, cliente.getCorreo());
+            stmt.setString(6,cliente.getFecha_nacimiento());
+
+            if (cliente.getId() != null && cliente.getId() > 0){
+                stmt.setLong(7, cliente.getId());
+            }else{
+                stmt.setDate(7, new Date(cliente.getFecha_registro().getTime()));
+            }
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -91,7 +116,7 @@ public class ClienteRepositorioImpl implements RepositorioPersona<Cliente> {
         cliente.setNumero_documento(rs.getLong("n_documento"));
         cliente.setCelular(rs.getLong("celular"));
         cliente.setCorreo(rs.getString("correo"));
-        cliente.setFecha_nacimiento(rs.getDate("fecha_nacimiento"));
+        cliente.setFecha_nacimiento(rs.getString("fecha_nacimiento"));
         cliente.setFecha_registro(rs.getDate("fecha_registro"));
 
 
