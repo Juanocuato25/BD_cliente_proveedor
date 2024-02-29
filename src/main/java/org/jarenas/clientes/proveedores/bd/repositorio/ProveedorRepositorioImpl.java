@@ -85,7 +85,13 @@ public class ProveedorRepositorioImpl implements RepositorioPersona<Proveedor> {
 
     @Override
     public void eliminar(Long id) {
-
+        try(Connection conn = getConnection();
+        PreparedStatement stmt = conn.prepareStatement("DELETE FROM proveedores WHERE idproveedores=?")) {
+            stmt.setLong(1,id);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

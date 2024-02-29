@@ -20,6 +20,7 @@ public class Principal {
         //repositorioProveedor.listar().forEach(System.out::println);
         //System.out.println(repositorioProveedor.porId(1L));
 
+
         Proveedor p = new Proveedor();
         p.setNombre("Coca Cola");
         p.setCelular(601796511L);
@@ -29,10 +30,13 @@ public class Principal {
         p.setNumero_documento(30313031L);
         p.setFecha_registro(new Date());
         p.setCorreo("cocacola@outloo.com");
-        p.setObservaciones("Dias toma de pedido: Lunes y jueves \n Dias de entrega pedido: Martes y Jueves");
+        p.setObservaciones("Dias toma de pedido: Lunes y jueves Dias de entrega pedido: Martes y Jueves");
 
         repositorioProveedor.guardar(p);
         repositorioProveedor.listar().forEach(System.out::println);
+
+        /*repositorioProveedor.eliminar(3L);
+        repositorioProveedor.listar().forEach(System.out::println);*/
 
     }
 }
